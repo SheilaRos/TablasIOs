@@ -8,18 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var tabla: UITableView!
+    
+    @IBAction func sliderAccion(_ sender: AnyObject) {
+        tabla.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //cuantas filas tiene nuestra columna
+        return Int(slider.maximumValue)+1
+    }
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //crear una celda
+        let miCelda = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "celda")
+        let resultado:Int = indexPath.row * Int(slider.value)
+        let num: Int = Int(slider.value)
+        
+ miCelda.textLabel?.text = String(indexPath.row) + "*" + String(num) + "=" + String(resultado)
+        return miCelda
+    }
 
 }
 
