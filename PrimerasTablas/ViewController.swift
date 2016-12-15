@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //crear una celda
-        let miCelda = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "celda")
+        let miCelda = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "miCelda")
         let resultado:Int = indexPath.row * Int(slider.value)
         let num: Int = Int(slider.value)
         
